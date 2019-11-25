@@ -50,4 +50,7 @@ function void runArp(int sequence[], dur durations[], dur stepDur) {
 
 spork ~ runArp(sequence, durations, tempo.sixteenthNote);
 
-while(true) second => now;
+while(master.gain() > 0.0) {
+    master.gain() - .05 => master.gain;    
+    tempo.note => now;
+}
